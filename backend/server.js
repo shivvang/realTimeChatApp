@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
+import userRoutes from "./routes/user.routes.js";
 import { connectionToMongoDb } from "./db/connectionToDb.js";
 import cookieParser from "cookie-parser";
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+app.use("/api/users", userRoutes);
 
 app.listen(PORT, () => {
   connectionToMongoDb();
