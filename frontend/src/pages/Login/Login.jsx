@@ -5,33 +5,33 @@ const Login = () => {
         <h1 className="text-3xl font-semibold text-center text-black">Login</h1>
         <form>
           <div>
-            <label className="label p-2">
-              <span className="text-base label-text">UserName</span>
+            <label className=" p-2">
+              <span className="">UserName</span>
             </label>
             <input
               type="text"
               placeholder="Enter Username"
-              className="w-full input input-bordered h-10"
+              className="w-full input  h-10"
             />
           </div>
           <div>
-            <label className="label p-2">
-              <span className="text-base label-text">Password</span>
+            <label className=" p-2">
+              <span className="">Password</span>
             </label>
             <input
               type="password"
               placeholder="Enter PassWord"
-              className="w-full input input-bordered h-10"
+              className="w-full h-10"
             />
           </div>
           <a
             href="#"
             className="text-sm hover:underline hover:text-red-600 mt-2 inline-block"
           >
-            Maybe wanna Sign Up
+            Maybe wanna Sign Up Instead
           </a>
-          <div>
-            <button className="btn  btn-block sm mt-2">Login in </button>
+          <div className="flex justify-center">
+            <button className="bg-white mt-2 w-32 rounded-md">Login in </button>
           </div>
         </form>
       </div>
