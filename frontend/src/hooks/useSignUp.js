@@ -1,8 +1,10 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useAuthContext } from "../context/AuthContext";
 
 const useSignUp = () => {
   const [loading, setLoading] = useState(false);
+  const { setAuthUser } = useAuthContext();
 
   const signup = async ({ userName, fullName, password, confirmPassword }) => {
     const success = handleInputErrors({
@@ -27,7 +29,16 @@ const useSignUp = () => {
       });
 
       const data = await res.json();
-      console.log("value we get after calling from frontend to backend", data);
+      // console.log("value we get after calling from frontend to backend", data);
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      //local storage
+      localStorage.setItem("chat-user", JSON.stringify(data));
+
+      //context
+      setAuthUser(data);
     } catch (error) {
       toast.error(error.message);
     } finally {
