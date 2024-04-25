@@ -87,7 +87,12 @@ const SignUp = () => {
             Maybe wanna Login in Instead
           </Link>
           <div className="flex justify-center">
-            <button className="bg-white mt-2 w-32 rounded-md">Sign Up </button>
+            <button
+              className="bg-white mt-2 w-32 rounded-md"
+              disabled={loading}
+            >
+              {loading ? "...loading" : "Sign Up"}
+            </button>
           </div>
         </form>
       </div>
