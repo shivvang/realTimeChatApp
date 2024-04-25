@@ -25,7 +25,7 @@ const useLogOut = () => {
 
       setAuthUser(null);
     } catch (error) {
-      toast.error(error);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
