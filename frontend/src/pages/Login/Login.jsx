@@ -23,7 +23,8 @@ const Login = () => {
               type="text"
               placeholder="Enter Username"
               className="w-full input  h-10"
-              onClick={(e) => setUserName(e.currentTarget.value)}
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
             />
           </div>
           <div>
@@ -34,7 +35,8 @@ const Login = () => {
               type="password"
               placeholder="Enter PassWord"
               className="w-full h-10"
-              onClick={(e) => setPassword(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <Link

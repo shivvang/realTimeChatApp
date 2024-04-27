@@ -7,20 +7,13 @@ const useLogin = () => {
   const { setAuthUser } = useAuthContext();
 
   const login = async (userName, password) => {
-    // const success = handleInputErrors({
-    //   userName,
-    //   password,
-
-    // });
-
-    // if (!success) return;
+    const success = handleInputErrors(userName, password);
+    if (!success) return;
     setLoading(true);
     try {
       const res = await fetch("/api/auth/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName, password }),
       });
 
@@ -38,23 +31,16 @@ const useLogin = () => {
       setLoading(false);
     }
   };
+
   return { loading, login };
 };
 export default useLogin;
 
-// function handleInputErrors({ userName, fullName, password, confirmPassword }) {
-//   if (!fullName || !userName || !password || !confirmPassword) {
-//     toast.error("please fill in all the fields");
-//     return false;
-//   }
-//   if (confirmPassword !== password) {
-//     toast.error("passwords do not Match");
-//     return false;
-//   }
-//   if (password.length < 6) {
-//     toast.error("password must be of at least 6 characters");
-//     return false;
-//   }
+function handleInputErrors(username, password) {
+  if (!username || !password) {
+    toast.error("Please fill in all fields");
+    return false;
+  }
 
-//   return true;
-// }
+  return true;
+}
