@@ -1,18 +1,25 @@
-const Conversation = () => {
+import useConversation from "../../zustand/useConversation";
+
+const Conversation = ({ conversation, lastIdx }) => {
+  const { selectedConversation, setSelectedConversation } = useConversation();
+  const isSelected = selectedConversation?._id === conversation._id;
+
   return (
     <>
-      <div className="flex gap-4 items-center hover:bg-neutral-950 rounded p-2 py-1 cursor-pointer">
+      <div
+        className={`flex gap-4 items-center hover:bg-neutral-950 rounded p-2 py-1 cursor-pointer ${
+          isSelected ? "bg-neutral-950" : ""
+        }`}
+        onClick={() => setSelectedConversation(conversation)}
+      >
         <div className="w-12 rounded-full">
-          <img
-            src="https://mirafit.co.uk/wp/wp-content/uploads/2023/11/Athletes-Page-Big-Loz-1024x1024.jpg"
-            alt="user avatar"
-          />
+          <img src={conversation.profilePicture} alt="user avatar" />
         </div>
         <div>
-          <p className="font-bold text-gray-200">Big loz</p>
+          <p className="font-bold text-gray-200">{conversation.fullName}</p>
         </div>
       </div>
-      <hr className="my-2" />
+      {!lastIdx && <hr className="my-2" />}
     </>
   );
 };
