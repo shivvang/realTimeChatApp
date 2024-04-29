@@ -50,8 +50,7 @@ export const getMessages = async (req, res) => {
       participants: { $all: [senderId, recieverId] },
     }).populate("messages");
 
-    res.status(200).json(conversation.messages);
-
+    //made quite a blunder here somehow returned response earlier then supposed to
     if (!conversation) {
       return res.status(200).json([]);
     }
