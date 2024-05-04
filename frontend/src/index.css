@@ -25,3 +25,10 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #242424;
 }
+
+.online-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #4caf50; /* Green color */
+}
